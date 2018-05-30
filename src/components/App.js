@@ -8,7 +8,8 @@ export default class App extends Component {
     super();
 
     this.state = {
-      image: null
+      image: null,
+      header: null
     };
   }
 
@@ -26,8 +27,12 @@ export default class App extends Component {
     };
   }
 
+  handleHeaderChange({ target }) {
+    this.setState({ header: target.value });
+  }
+
   render() {
-    const { image } = this.state;
+    const { image, header } = this.state;
 
     return (
       <main>
@@ -48,9 +53,22 @@ export default class App extends Component {
               />
             </label>
           </div>
+          <div>
+            <label>
+              Header:
+              <input
+                onChange={event => this.handleHeaderChange(event)}
+              />
+            </label>
+          </div>
         </section>
         <section>
-          <img src={image}/>
+          <div className="image-container"
+            ref={node => this.imageExport = node}
+          >
+            <h1>{header}</h1>
+            <img src={image}/>
+          </div>
         </section>
       </main>
     );
