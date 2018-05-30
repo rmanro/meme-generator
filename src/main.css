@@ -34,3 +34,15 @@ body {
 .courier {
   font-family: 'Courier New', Courier, monospace
 }
+
+.small {
+  font-size: small;
+}
+
+.large {
+ font-size: large;
+}
+
+.larger {
+  font-size: larger;
+}

@@ -9,6 +9,12 @@ const fontFamilies = [
   'Courier'
 ];
 
+const fontSizes = [
+  'Small',
+  'Large',
+  'Larger'
+];
+
 export default class App extends Component {
 
   constructor() {
@@ -18,7 +24,8 @@ export default class App extends Component {
       image: null,
       header: null,
       font: 'arial',
-      color: '#000000'
+      color: '#000000',
+      fontSize: 'Small'
     };
   }
 
@@ -57,6 +64,20 @@ export default class App extends Component {
     }
   }
 
+  handleSizeChange({ target }) {
+    switch(target.value) {
+      case 'Small':
+        this.setState({ fontSize: 'small' });
+        break;
+      case 'Large':
+        this.setState({ fontSize: 'large' });
+        break;
+      case 'Larger':
+        this.setState({ fontSize: 'larger' });
+        break;
+    }
+  }
+
   handleColorChange({ target }) {
     this.setState({ color: target.value });
   }
@@ -68,7 +89,7 @@ export default class App extends Component {
   }
 
   render() {
-    const { image, header, font, color } = this.state;
+    const { image, header, font, color, fontSize } = this.state;
 
     return (
       <main>
@@ -103,8 +124,13 @@ export default class App extends Component {
             </label>
           </div>
           <div>
-            <select value={this.state.value} onChange={event => this.handleFontChange(event)}>
+            <select onChange={event => this.handleFontChange(event)}>
               {fontFamilies.map(fonts => <option key={fonts}>{fonts}</option>)}
+            </select>
+          </div>
+          <div>
+            <select onChange={event => this.handleSizeChange(event)}>
+              {fontSizes.map(sizes => <option key={sizes}>{sizes}</option>)}
             </select>
           </div>
           <div>
@@ -117,7 +143,7 @@ export default class App extends Component {
           <div className="image-container"
             ref={node => this.imageExport = node}
           >
-            <h1 style={{ color }} className={font}>{header}</h1>
+            <h1 style={{ color }} className={`${font} ${fontSize}`}>{header}</h1>
             <img src={image}/>
           </div>
         </section>
