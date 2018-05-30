@@ -4,7 +4,8 @@ import fileSaver from 'file-saver';
 
 const fontFamilies = [
   'Arial',
-  'Comic Sans MS'
+  'Comic Sans MS',
+  'Impact'
 ];
 
 export default class App extends Component {
@@ -45,6 +46,9 @@ export default class App extends Component {
         break;
       case 'Comic Sans MS':
         this.setState({ font: 'comic-sans' });
+        break;
+      case 'Impact':
+        this.setState({ font: 'impact' });
         break;
     }
   }
