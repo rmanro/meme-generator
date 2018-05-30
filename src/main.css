@@ -36,13 +36,17 @@ body {
 }
 
 .small {
-  font-size: small;
+  font-size: 14px;
 }
 
 .large {
- font-size: large;
+ font-size: 24px;
 }
 
 .larger {
-  font-size: larger;
+  font-size: 36px;
+}
+
+.huge {
+  font-size: 48px;
 }

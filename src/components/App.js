@@ -12,7 +12,8 @@ const fontFamilies = [
 const fontSizes = [
   'Small',
   'Large',
-  'Larger'
+  'Larger',
+  'Huge'
 ];
 
 export default class App extends Component {
@@ -74,6 +75,9 @@ export default class App extends Component {
         break;
       case 'Larger':
         this.setState({ fontSize: 'larger' });
+        break;
+      case 'Huge':
+        this.setState({ fontSize: 'huge' });
         break;
     }
   }
