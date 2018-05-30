@@ -5,7 +5,8 @@ import fileSaver from 'file-saver';
 const fontFamilies = [
   'Arial',
   'Comic Sans MS',
-  'Impact'
+  'Impact',
+  'Courier'
 ];
 
 export default class App extends Component {
@@ -49,6 +50,9 @@ export default class App extends Component {
         break;
       case 'Impact':
         this.setState({ font: 'impact' });
+        break;
+      case 'Courier':
+        this.setState({ font: 'courier' });
         break;
     }
   }
@@ -105,7 +109,7 @@ export default class App extends Component {
           </div>
           <div>
             <button onClick={() => this.handleExport()}>
-              export
+              EXPORT
             </button>
           </div>
         </section>

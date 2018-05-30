@@ -28,5 +28,9 @@ body {
 }
 
 .impact {
-    font-family: Impact, sans-serif;
-  }
+  font-family: Impact, sans-serif;
+}
+
+.courier {
+  font-family: 'Courier New', Courier, monospace
+}
