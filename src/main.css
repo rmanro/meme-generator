@@ -1,18 +1,20 @@
 body {
-  display: flex;
-  font-family: sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .image-container {
   position: relative;
-  size: fit-content;
 }
 
-.image-container * {
+.image-container img {
   position: absolute;
-  top: 0;
+  float: left;
 }
 
 .image-container h1 {
-  z-index: 1;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
 }
