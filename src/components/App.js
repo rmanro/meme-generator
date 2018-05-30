@@ -8,23 +8,31 @@ export default class App extends Component {
     super();
 
     this.state = {
-      name: 'Test'
+      image: null
     };
   }
 
-  handleTest() {
-    this.setState({ name: 'Test Worked!' });
+  handleImageUrl({ target }) {
+    this.setState({ image: target.value });
   }
 
   render() {
-    const { name } = this.state;
+    const { image } = this.state;
 
     return (
       <main>
-        <h1>Hello {name}</h1>
-        <div>
-          <button onClick={() => this.handleTest()}>Test</button>
-        </div>
+        <h1>Meme Generator</h1>
+        <section>
+          <div>
+            <label>
+              Image URL:
+              <input onChange={event => this.handleImageUrl(event)}/>
+            </label>
+          </div>
+        </section>
+        <section>
+          <img src={image}/>
+        </section>
       </main>
     );
   }
