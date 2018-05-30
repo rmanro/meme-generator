@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-// import dom2image from 'dom-to-image';
-// import fileSaver from 'file-saver';
+import dom2image from 'dom-to-image';
+import fileSaver from 'file-saver';
 
 const fontFamilies = [
   'Arial, Helvetica, sans-serif',
@@ -46,6 +46,12 @@ export default class App extends Component {
     this.setState({ color: target.value });
   }
 
+  handleExport() {
+    dom2image.toBlob(this.imageExport).then(blob => {
+      fileSaver.saveAs(blob, 'meme-image.png');
+    });
+  }
+
   render() {
     const { image, header, fontFamily, color } = this.state;
 
@@ -85,6 +91,11 @@ export default class App extends Component {
             <select value={fontFamily} onChange={event => this.handleFontChange(event)}>
               {fontFamilies.map(fonts => <option key={fonts}>{fonts}</option>)}
             </select>
+          </div>
+          <div>
+            <button onClick={() => this.handleExport()}>
+              export
+            </button>
           </div>
         </section>
         <section>
