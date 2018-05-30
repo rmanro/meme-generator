@@ -3,8 +3,8 @@ import dom2image from 'dom-to-image';
 import fileSaver from 'file-saver';
 
 const fontFamilies = [
-  'Arial, Helvetica, sans-serif',
-  '"Comic Sans MS", cursive, sans-serif'
+  'Arial',
+  'Comic Sans MS'
 ];
 
 export default class App extends Component {
@@ -15,7 +15,7 @@ export default class App extends Component {
     this.state = {
       image: null,
       header: null,
-      font: 'Arial, Helvetica, sans-serif',
+      font: 'arial',
       color: '#000000'
     };
   }
@@ -39,7 +39,14 @@ export default class App extends Component {
   }
 
   handleFontChange({ target }) {
-    this.setState({ font: target.value });
+    switch(target.value) {
+      case 'Arial':
+        this.setState({ font: 'arial' });
+        break;
+      case 'Comic Sans MS':
+        this.setState({ font: 'comic-sans' });
+        break;
+    }
   }
 
   handleColorChange({ target }) {
@@ -53,7 +60,7 @@ export default class App extends Component {
   }
 
   render() {
-    const { image, header, fontFamily, color } = this.state;
+    const { image, header, font, color } = this.state;
 
     return (
       <main>
@@ -88,7 +95,7 @@ export default class App extends Component {
             </label>
           </div>
           <div>
-            <select value={fontFamily} onChange={event => this.handleFontChange(event)}>
+            <select value={this.state.value} onChange={event => this.handleFontChange(event)}>
               {fontFamilies.map(fonts => <option key={fonts}>{fonts}</option>)}
             </select>
           </div>
@@ -102,7 +109,7 @@ export default class App extends Component {
           <div className="image-container"
             ref={node => this.imageExport = node}
           >
-            <h1 style={{ color }}>{header}</h1>
+            <h1 style={{ color }} className={font}>{header}</h1>
             <img src={image}/>
           </div>
         </section>
